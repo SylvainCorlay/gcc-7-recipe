@@ -1,0 +1,29 @@
+language: generic
+env:
+  global:
+    - secure: rq5AZYvsKuSwpHmbD+sq+tY1oC+qZapa430jrEuefdbhxGcCHDKs2vysbR6LSAHW8hylpW90sHsIbQ+CGpKfElSkTGV6YlPCr+x5Jvc8YdSLAfyLekxOaqUHTEoSBFo6uJvl57ufR1ovUKOQs9AHbWqNR7/HggNhi0WSdSIzZ2wbz9ubioqusxD6jlS/6sD4O1OSDO69J09rVTeiVS+xVzUaqkKeJbU2tB01+3TTlQZGpkZj+dZ70hOqkSuvRX1GBlWtIbmUxsktyjzu7uxH1s+3578Yf0Sulzujnz5XM4ZkcHJHt/mJ3FCzAFwPHrYd2LqBU/4K1BIvBV1m6+vwRQN/Bn7M7QU6sd9ENoNSGa+10QTS1gnlmk8DOK7o8J7MECxS4WYCWMtH5EW8RocDqxsQBVbKCOc2EtzC2XHGtHId4EMxKp/BXRHYP+vgTr8SBz+X0ErnR5ZyZkrDO8UwM2MmUaoL5uFah9rU172OdKbW2VmRLtdsaN++sOeGIhXZF2z7jFsLUhXPOBJc0JIl+dGSSo2eqtamWBYl7+hVDlaXq3Rql8sZyxtS5zVbIW2iLeIuShF47mF5eVpnX+41ccW5Myo2kDovRcw/Iwk47pBmP+e2d7dlhGVkw7adG0vpnIbHFNvkQmPhsQvw9mMYLrUaCFqf/e/AAMeJZm/49u0=
+os:
+- linux
+- osx
+before_install:
+- |
+  if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+    wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
+  fi
+- |
+  if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then 
+    sudo apt-get update;
+    wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+  fi
+install:
+- bash miniconda.sh -b -p $HOME/miniconda
+- export PATH="$HOME/miniconda/bin:$PATH"
+- hash -r
+- conda config --set always_yes yes --set changeps1 no
+- conda update -q conda
+- conda info -a
+- conda install conda-build anaconda-client;
+script:
+  - conda build recipe -c conda-forge
+after_success:
+- anaconda -t $ANACONDA_TOKEN upload --force ${HOME}/miniconda/conda-bld/*/${PROJECT_NAME}-*.tar.bz2
