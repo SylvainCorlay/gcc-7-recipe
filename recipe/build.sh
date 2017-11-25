@@ -9,6 +9,8 @@
 GCC_PREFIX="$PREFIX/gcc"
 mkdir "$GCC_PREFIX"
 
+export CPU_COUNT=2
+
 ln -s "$PREFIX/lib" "$PREFIX/lib64"
 
 if [ "$(uname)" == "Darwin" ]; then
@@ -55,7 +57,7 @@ else
         --disable-multilib
 fi
 
-make -j"$CPU_COUNT"
+make -j"$CPU_COUNT" &>/dev/null
 make install-strip
 rm "$PREFIX/lib64"
 
