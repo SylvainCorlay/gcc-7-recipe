@@ -1,9 +1,8 @@
 language: generic
 env:
   global:
-    - 
-    - PROJECT_NAME=gcc-7
-    - secure: rq5AZYvsKuSwpHmbD+sq+tY1oC+qZapa430jrEuefdbhxGcCHDKs2vysbR6LSAHW8hylpW90sHsIbQ+CGpKfElSkTGV6YlPCr+x5Jvc8YdSLAfyLekxOaqUHTEoSBFo6uJvl57ufR1ovUKOQs9AHbWqNR7/HggNhi0WSdSIzZ2wbz9ubioqusxD6jlS/6sD4O1OSDO69J09rVTeiVS+xVzUaqkKeJbU2tB01+3TTlQZGpkZj+dZ70hOqkSuvRX1GBlWtIbmUxsktyjzu7uxH1s+3578Yf0Sulzujnz5XM4ZkcHJHt/mJ3FCzAFwPHrYd2LqBU/4K1BIvBV1m6+vwRQN/Bn7M7QU6sd9ENoNSGa+10QTS1gnlmk8DOK7o8J7MECxS4WYCWMtH5EW8RocDqxsQBVbKCOc2EtzC2XHGtHId4EMxKp/BXRHYP+vgTr8SBz+X0ErnR5ZyZkrDO8UwM2MmUaoL5uFah9rU172OdKbW2VmRLtdsaN++sOeGIhXZF2z7jFsLUhXPOBJc0JIl+dGSSo2eqtamWBYl7+hVDlaXq3Rql8sZyxtS5zVbIW2iLeIuShF47mF5eVpnX+41ccW5Myo2kDovRcw/Iwk47pBmP+e2d7dlhGVkw7adG0vpnIbHFNvkQmPhsQvw9mMYLrUaCFqf/e/AAMeJZm/49u0=
+  - PROJECT_NAME=gcc-7
+  - secure: PLv/zse9XQaXUEd/vgXo+o3xPFNWVmUmHzAwylZfRxOPe5ZlE6MOs6SGdz4IKmlcilrcASkLGhdH0uLR0whVIjKtDuvi9CRw/jatEgW06b1hchUSEAskSkQod+tM2Ggw/WRIN3VG1DymmoK9SYaMMTHKOfjpwtgsZGXqeHq/wMcOwGt/MZFxSdpoF9VNWHQtlnRCpmI2PhUX9/TJwdDwoLxIjGSlnEQJDCjk/PPaWTMMAhCJ4FUNGnG/HKryfv97CVGfn4kzDRWCb5f6HLcI5jg3ZXNYabWqzY8ix0KDn88U5nSwCF1O6v6khPvUfkVT47LKjSZWC0oJRE+kVq2HXwcRY1Ve/zaF9lE5l1520rKDJyIADuUsOBVggR0k/voz/k4pFKxHr221OiPVPQfRvTXembz6YewezjfJkq9gzK9hgSQGJyb3u3EQXLLAvt2Ve60he4RRqa/DzNRjZliqU89sOyktJe1G4lkF9GBwuGcyoWFwg8HAqNV7aEIYhDuDbMjQchvaVvkzYwDkltKcUH13JGJwUA5be/vqdYJqd9oCPeU4Z2jmm9ExTsves8VpH/I4opLo2e0YTuHocavKCdLH7/e2HN0B10D5rel52FH/nfZmP1AJndvJx/JYJbLnx7VnKfz5LxUVxu1vaHlblSDLG5DpQggOyh3e3KeNnT0=
 os:
 - linux
 - osx
@@ -12,11 +11,8 @@ before_install:
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
     wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
   fi
-- |
-  if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then 
-    sudo apt-get update;
-    wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-  fi
+- "if [[ \"$TRAVIS_OS_NAME\" == \"linux\" ]]; then \n  sudo apt-get update;\n  wget
+  https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;\nfi\n"
 install:
 - bash miniconda.sh -b -p $HOME/miniconda
 - export PATH="$HOME/miniconda/bin:$PATH"
@@ -26,6 +22,6 @@ install:
 - conda info -a
 - conda install conda-build anaconda-client;
 script:
-  - travis_wait 40 conda build -q recipe -c conda-forge
+- conda build ./recipe -c conda-forge
 after_success:
 - anaconda -t $ANACONDA_TOKEN upload --force ${HOME}/miniconda/conda-bld/*/${PROJECT_NAME}-*.tar.bz2
