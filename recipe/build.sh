@@ -58,7 +58,7 @@ else
         --disable-multilib
 fi
 
-travis_wait 50 make -j"$CPU_COUNT" --quiet
+make -j"$CPU_COUNT" --quiet
 make install-strip
 rm "$PREFIX/lib64"
 
