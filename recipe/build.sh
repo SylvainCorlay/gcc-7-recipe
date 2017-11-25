@@ -55,7 +55,7 @@ else
         --disable-multilib
 fi
 
-make -j"$CPU_COUNT" &>/dev/null
+make -j"$CPU_COUNT"
 make install-strip
 rm "$PREFIX/lib64"
 
