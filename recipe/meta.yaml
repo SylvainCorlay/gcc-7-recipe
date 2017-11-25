@@ -1,0 +1,42 @@
+# This file created by conda-build 2.1.12
+# meta.yaml template originally from:
+# /home/weiyan/gcc-7, last modified Sat May 20 06:45:06 2017
+# ------------------------------------------------
+
+package:
+    name: gcc-7
+    version: 7.2.0
+source:
+    fn: gcc-7.2.0.tar.xz
+    md5: ff370482573133a7fcdd96cd2f552292
+    # patches:
+    #     - 0001-Libiberty-normalize-split-directories.patch
+    url: http://fr.mirror.babylon.network/gcc/releases/gcc-7.2.0/gcc-7.2.0.tar.xz
+build:
+    detect_binary_files_with_prefix: 'false'
+    noarch: ''
+    noarch_python: false
+    number: '0'
+    string: '0'
+requirements:
+    build:
+        - mpc 1.0.3 0
+        - gmp 6.1.0 0
+        - libiconv 1.14 0
+        - mpfr 3.1.5 0
+        - isl 0.17.1 1
+    run:
+        - gmp >=6.1
+        - mpfr >=2.4.2
+        - mpc >=0.8.1
+        - isl >=0.17,<=0.17.1
+        - libiconv >=1.14
+test:
+    commands:
+        - gcc --help
+about:
+    home: http://gcc.gnu.org/
+    license: GPL
+    summary: The GNU Compiler Collection
+extra:
+    final: true
