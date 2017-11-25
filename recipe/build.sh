@@ -57,7 +57,7 @@ else
         --disable-multilib
 fi
 
-make -j"$CPU_COUNT" | tee gcc.log 2>&1
+make -j"$CPU_COUNT" --quiet
 make install-strip
 rm "$PREFIX/lib64"
 
