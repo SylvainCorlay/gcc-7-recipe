@@ -9,8 +9,6 @@
 GCC_PREFIX="$PREFIX/gcc"
 mkdir "$GCC_PREFIX"
 
-export CPU_COUNT=2
-
 ln -s "$PREFIX/lib" "$PREFIX/lib64"
 
 if [ "$(uname)" == "Darwin" ]; then

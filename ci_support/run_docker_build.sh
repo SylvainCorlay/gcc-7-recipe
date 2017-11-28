@@ -60,13 +60,13 @@ conda install --yes --quiet conda-forge-build-setup
 source run_conda_forge_build_setup
 
 conda build /recipe_root --quiet || exit 1
-# upload_or_check_non_existence /recipe_root conda-forge --channel=main || exit 1
+upload_or_check_non_existence /recipe_root gouarin --channel=main || exit 1
 
-# touch /feedstock_root/build_artefacts/conda-forge-build-done
+touch /feedstock_root/build_artefacts/conda-forge-build-done
 EOF
 
 # double-check that the build got to the end
 # see https://github.com/conda-forge/conda-smithy/pull/337
 # for a possible fix
-# set -x
-# test -f "$FEEDSTOCK_ROOT/build_artefacts/conda-forge-build-done" || exit 1
+set -x
+test -f "$FEEDSTOCK_ROOT/build_artefacts/conda-forge-build-done" || exit 1
