@@ -16,8 +16,8 @@ build:
     detect_binary_files_with_prefix: 'false'
     noarch: ''
     noarch_python: false
-    number: '0'
-    string: '0'
+    number: '1'
+    string: '1'
 requirements:
     build:
         - mpc 1.0.3 0
