@@ -11,7 +11,7 @@ source:
     md5: ff370482573133a7fcdd96cd2f552292
     # patches:
     #     - 0001-Libiberty-normalize-split-directories.patch
-    url: http://fr.mirror.babylon.network/gcc/releases/gcc-7.2.0/gcc-7.2.0.tar.xz
+    url: ftp://ftp.gnu.org/gnu/gcc/gcc-7.2.0/gcc-7.2.0.tar.xz
 build:
     detect_binary_files_with_prefix: 'false'
     number: 2
