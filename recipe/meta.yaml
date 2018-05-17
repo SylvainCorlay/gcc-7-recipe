@@ -24,11 +24,11 @@ requirements:
         - mpfr 4.0.1 0
         - isl 0.17.1 1
     run:
-        - gmp>=6.1
-        - mpfr>=4.0.1
-        - mpc>=1.1
-        - isl>=0.17,<=0.17.1
-        - libiconv>=1.15
+        - gmp >=6.1,<0.7
+        - mpfr >=4.0.1,<4.1
+        - mpc >=1.1,<1.2
+        - isl >=0.17,<0.18
+        - libiconv >=1.15,<1.16
 test:
     commands:
         - gcc --help
