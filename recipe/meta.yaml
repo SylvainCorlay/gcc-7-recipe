@@ -18,17 +18,17 @@ build:
     string: '2'
 requirements:
     build:
-        - mpc 1.0.3 0
-        - gmp 6.1.0 0
-        - libiconv 1.14 0
-        - mpfr 3.1.5 0
+        - mpc 1.1.0 5
+        - gmp 6.1.2 0
+        - libiconv 1.15
+        - mpfr 4.0.1 0
         - isl 0.17.1 1
     run:
-        - gmp >=6.1
-        - mpfr >=2.4.2
-        - mpc >=0.8.1
-        - isl >=0.17,<=0.17.1
-        - libiconv >=1.14
+        - gmp>=6.1
+        - mpfr>=4.0.1
+        - mpc>=1.1
+        - isl>=0.17,<=0.17.1
+        - libiconv>=1.15
 test:
     commands:
         - gcc --help

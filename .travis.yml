@@ -4,8 +4,8 @@ env:
   - PROJECT_NAME=gcc-7
   - secure: PLv/zse9XQaXUEd/vgXo+o3xPFNWVmUmHzAwylZfRxOPe5ZlE6MOs6SGdz4IKmlcilrcASkLGhdH0uLR0whVIjKtDuvi9CRw/jatEgW06b1hchUSEAskSkQod+tM2Ggw/WRIN3VG1DymmoK9SYaMMTHKOfjpwtgsZGXqeHq/wMcOwGt/MZFxSdpoF9VNWHQtlnRCpmI2PhUX9/TJwdDwoLxIjGSlnEQJDCjk/PPaWTMMAhCJ4FUNGnG/HKryfv97CVGfn4kzDRWCb5f6HLcI5jg3ZXNYabWqzY8ix0KDn88U5nSwCF1O6v6khPvUfkVT47LKjSZWC0oJRE+kVq2HXwcRY1Ve/zaF9lE5l1520rKDJyIADuUsOBVggR0k/voz/k4pFKxHr221OiPVPQfRvTXembz6YewezjfJkq9gzK9hgSQGJyb3u3EQXLLAvt2Ve60he4RRqa/DzNRjZliqU89sOyktJe1G4lkF9GBwuGcyoWFwg8HAqNV7aEIYhDuDbMjQchvaVvkzYwDkltKcUH13JGJwUA5be/vqdYJqd9oCPeU4Z2jmm9ExTsves8VpH/I4opLo2e0YTuHocavKCdLH7/e2HN0B10D5rel52FH/nfZmP1AJndvJx/JYJbLnx7VnKfz5LxUVxu1vaHlblSDLG5DpQggOyh3e3KeNnT0=
 os:
-- linux
-#- osx
+#- linux
+- osx
 before_install:
 - |
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
